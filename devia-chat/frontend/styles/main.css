@@ -348,25 +348,22 @@ main .direita .container-titulo-direita h1 {
   font-size: 32px;
   color: var(--text);
 }
+main .direita .container-titulo-direita h1 span {
+  font-style: italic;
+  color: var(--terra);
+}
+main .direita .container-titulo-direita h1 span.oculta {
+  display: none;
+}
 main .direita .form-tabs {
   display: flex;
-  background: var(--cream-dark);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-in);
-  padding: 4px;
 }
 main .direita .form-tabs button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
-  border-radius: var(--radius-xs);
-  font-family: var(--font-label);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-soft);
-  cursor: pointer;
-  transition: all 0.2s;
+  background: var(--sand);
+  border-radius: var(--radius-sm);
+  background: var(--cream-dark);
+  box-shadow: var(--shadow-in);
+  color: var(--font-label);
 }
 main .direita .form-tabs button.active {
   background-color: var(--cream);
@@ -376,25 +373,31 @@ main .direita .form-tabs button.active {
 main .direita .form-tabs button:hover {
   color: var(--text);
 }
-main .direita .logar-sessao,
-main .direita .cadastrar-sessao {
+main .direita .logar-cadastrar-usuario {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-main .direita .logar-sessao .esqueceu-senha,
-main .direita .cadastrar-sessao .esqueceu-senha {
+main .direita .logar-cadastrar-usuario label.oculta {
+  display: none;
+}
+main .direita .logar-cadastrar-usuario input.oculta {
+  display: none;
+}
+main .direita .logar-cadastrar-usuario .esqueceu-senha {
   display: flex;
   justify-content: flex-end;
 }
-main .direita .logar-sessao .esqueceu-senha a,
-main .direita .cadastrar-sessao .esqueceu-senha a {
+main .direita .logar-cadastrar-usuario .esqueceu-senha a {
   font-size: 16px;
+  font-family: var(--font-label);
   color: var(--terra);
   text-decoration: none;
 }
-main .direita .logar-sessao button,
-main .direita .cadastrar-sessao button {
+main .direita .logar-cadastrar-usuario .esqueceu-senha.oculta {
+  display: none;
+}
+main .direita button {
   width: 100%;
   padding: 15px;
   border-radius: var(--radius-sm);
@@ -410,26 +413,24 @@ main .direita .cadastrar-sessao button {
   margin: 20px 0 20px 0;
   transition: all 0.2s;
 }
-main .direita .logar-sessao button:hover,
-main .direita .cadastrar-sessao button:hover {
+main .direita button:hover {
   background: var(--terra-light);
   transform: translateY(1px);
 }
-main .direita .logar-sessao .politicas,
-main .direita .cadastrar-sessao .politicas {
+main .direita .politicas {
   font-size: 14px;
   color: var(--text-soft);
   font-family: var(--font-body);
   text-align: center;
   line-height: 1.5;
-}
-main .direita .logar-sessao .politicas p a,
-main .direita .cadastrar-sessao .politicas p a {
-  color: var(--terra);
   text-decoration: none;
 }
-main .direita .cadastrar-sessao {
-  display: none;
+main .direita .politicas:visited {
+  color: var(--terra);
+}
+main .direita .politicas p a {
+  color: var(--terra);
+  text-decoration: none;
 }
 
 /* MODAL */
