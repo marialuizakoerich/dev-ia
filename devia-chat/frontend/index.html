@@ -63,16 +63,16 @@
         <!-- TITULO DIREITA -->
         <div class="container-titulo-direita">
           <h1>Bem vindo (a) <span class="span-volta">de volta.</span></h1>
-          <p class="p-header-e-footer frase-header">
+          <p class="p-header-e-footer frase-header" id="p-header">
             Entre na sua conta para continuar de onde parou
           </p>
         </div>
         <!-- BOTÕES ENTRAR E CRIAR CONTA -->
         <div class="form-tabs">
-          <button type="button" class="active" id="button-entrar" onclick="clicarEntrar(0)">
+          <button type="button" class="active" id="button-entrar" onclick="clicarEntrar(true)">
             Entrar
           </button>
-          <button type="button" id="button-cadastrar" onclick="clicarEntrar(1)">Criar conta</button>
+          <button type="button" id="button-cadastrar" onclick="clicarEntrar(false)">Criar conta</button>
         </div>
         <!-- FORMULÁRIO LOGAR/CADASTRAR USUÁRIO -->
         <form class="logar-cadastrar-usuario">

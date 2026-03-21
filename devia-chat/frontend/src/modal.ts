@@ -103,45 +103,85 @@ const buttonCadastrar = document.querySelector('#button-cadastrar') as HTMLEleme
 const spanDeVolta = document.querySelector('.span-volta')
 const pSpan = document.querySelector('.frase-header')
 
+//P HEADER
+const pHeader = document.querySelector('#p-header') as HTMLElement
 
 
+
+//MOSTRAR PALAVRA "DE VOLTA."
+function mostrarPalavraVolta () {
+    spanDeVolta?.classList.add('oculta')    
+}
 //OCULTAR PALAVRA "DE VOLTA."
-function ocultarPalavraVolta (valorBotao: number) {
-    if (valorBotao == 0) {
-        spanDeVolta?.classList.remove('oculta')
-    } else {
-        spanDeVolta?.classList.add('oculta')
-    }
+function ocultarPalavraVolta () {
+    spanDeVolta?.classList.remove('oculta')    
 }
 
-//TROCAR FRASE DO HEADER
-function trocarFraseHeader (fraseEntrar: HTMLElement)  {
-    fraseEntrar.innerText = 'Crie sua conta e começe agora'
+
+//MOSTRAR FRASE HEADER: ENTRAR
+function fraseOpcaoEntrar ()  {
+    pHeader.innerText = 'Entre na sua conta para continuar de onde parou'
+} 
+//MOSTRAR FRASE HEADER: CADASTRAR
+function fraseOpcaoCadastrar ()  {
+    pHeader.innerText = 'Crie sua conta e começe agora'
 } 
 
-//OCULTAR LABEL E INPUT DO NOME
-const labelNome = document.querySelector('#label-cadastro-nome') as HTMLElement
-const inputNome = document.querySelector('#input-cadastro-nome') as HTMLElement
 
+
+//MOSTRAR E OCULTAR LABEL: NOME
+const labelNome = document.querySelector('#label-cadastro-nome') as HTMLElement
+
+//OCULTAR LABEL: NOME
 function ocultarLabelNome () {
+    labelNome?.classList.remove('oculta')
+}
+//MOSTRAR LABEL:NOME
+function mostrarLabelNome () {
     labelNome?.classList.add('oculta')
 }
 
+//MOSTRAR E OCULTTAR INPUT: NOME
+const inputNome = document.querySelector('#input-cadastro-nome') as HTMLElement
+
+//OCULTAR INPUT: NOME
 function ocultarInputNome () {
+    inputNome?.classList.remove('oculta')
+}
+
+//MOSTRAR INPUT: NOME
+function mostrarInputNome () {
     inputNome?.classList.add('oculta')
 }
 
-//OCULTAR LABEL E INPUT DO CONFIRMAR SENHA
-const labelConfirmarSenha = document.querySelector('#label-confirmar-senha') as HTMLElement
-const inputConfirmarSenha = document.querySelector('#input-confirmar-senha') as HTMLElement
 
+//OCULTAR E MOSTRAR LABEL DO CONFIRMAR SENHA
+const labelConfirmarSenha = document.querySelector('#label-confirmar-senha') as HTMLElement
+
+//OCULTAR LABEL: CONFIRMAR SENHA
 function ocultarLabelConfirmarSenha () {
+    labelConfirmarSenha?.classList.remove('oculta')
+}
+
+//MOSTRAR LABEL: CONFIRMAR SENHA
+function mostrarLabelConfirmarSenha () {
     labelConfirmarSenha?.classList.add('oculta')
 }
 
+
+//OCULTAR E MOSTRAR INPUT DO CONFIRMAR SENHA
+const inputConfirmarSenha = document.querySelector('#input-confirmar-senha') as HTMLElement
+
+//OCULTAR INPUT: CONFIRMAR SENHA
 function ocultarInputConfirmarSenha () {
+    inputConfirmarSenha?.classList.remove('oculta')
+}
+
+//MOSTRAR INPUT: CONFIRMAR SENHA
+function mostrarInputConfirmarSenha () {
     inputConfirmarSenha?.classList.add('oculta')
 }
+
 
 //OCULTAR DIV ESQUECEU SENHA
 const divEsqueceuSenha = document.querySelector('.esqueceu-senha') as HTMLElement
@@ -157,12 +197,31 @@ function trocarTextoBotao (textoBotao: HTMLElement) {
 
 
 // LISTNER ALTERAR TELA DE LOGIN DE ENTRAR PARA CRIAR CONTA
-function clicarEntrar(valorBotao: number){
-    ocultarPalavraVolta (valorBotao)
+// function clicarEntrar(valorBotao: number){
+//     ocultarPalavraVolta (valorBotao)
+// }
 
+
+function clicarEntrar(isMostraEntrar: boolean){
+    if (isMostraEntrar == true) {
+        mostrarPalavraVolta();
+        fraseOpcaoEntrar();
+        mostrarLabelNome()
+        mostrarInputNome()
+
+
+    } else {
+        ocultarPalavraVolta();
+        fraseOpcaoCadastrar();
+        ocultarLabelNome()
+        ocultarInputNome()
+
+    }
 }
 
-
+// function clicarCadastrar(){
+//     ocultarPalavraVolta()
+// }
 
 // SE BOTAO ENTRAR ESTIVER SELECIONADO ENTAO: 
 //ocultar label e input nome
