@@ -1,244 +1,222 @@
 // ---------------- MODAL TERMO DE USO E POLITICA DE PRIVACIDADE ----------------
 // SELECIONAR OS MODAIS
-const modalTermos = document.querySelector('.container-modal-termos') as HTMLElement
-const modalPrivacidade = document.querySelector('.container-modal-privacidade') as HTMLElement
-const modalEsqueceuSenha = document.querySelector('.container-modal-formulario-senha') as HTMLElement
+const modalTermos = document.querySelector(
+  ".container-modal-termos",
+) as HTMLElement;
+const modalPrivacidade = document.querySelector(
+  ".container-modal-privacidade",
+) as HTMLElement;
+const modalEsqueceuSenha = document.querySelector(
+  ".container-modal-formulario-senha",
+) as HTMLElement;
 
 //SELECIONA OS LIKNS
-const linksTermos = document.querySelectorAll('a[href="#termos"]')
-const linksPrivacidade = document.querySelectorAll('a[href="#privacidade"]')
+const linksTermos = document.querySelectorAll('a[href="#termos"]');
+const linksPrivacidade = document.querySelectorAll('a[href="#privacidade"]');
 
 //SELECIONA OS BOTÕES DE FECHAR
-const botoesFechar = document.querySelectorAll('.botao-fechar-janela')
-const botoesPadraoLaranja = document.querySelectorAll('.botao-padrao-laranja')
+const botoesFechar = document.querySelectorAll(".botao-fechar-janela");
+const botoesPadraoLaranja = document.querySelectorAll(".botao-padrao-laranja");
 
 //ABRIR MODAIS
-function abrirModal (modal: HTMLElement) {
-    modal.classList.add('ativo')
+function abrirModal(modal: HTMLElement) {
+  modal.classList.add("ativo");
 }
 //FECHAR MODAIS
-function FecharModal (modal: HTMLElement) {
-    modal.classList.remove('ativo')
+function FecharModal(modal: HTMLElement) {
+  modal.classList.remove("ativo");
 }
 
 //LISTNERS ABERTURA
 //TERMOS
-linksTermos.forEach (link => {
-    link.addEventListener('click', (evento) => {
-        evento.preventDefault()
-        abrirModal(modalTermos)
-    })
-})
+linksTermos.forEach((link) => {
+  link.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    abrirModal(modalTermos);
+  });
+});
 //PRIVACIDADE
-linksPrivacidade.forEach (link => {
-    link.addEventListener('click', (evento) => {
-        evento.preventDefault()
-        abrirModal(modalPrivacidade)
-    })
-})
+linksPrivacidade.forEach((link) => {
+  link.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    abrirModal(modalPrivacidade);
+  });
+});
 
 //LISTNERS FECHAMENTO
 //BOTÃO FECHAR JANELA
-botoesFechar.forEach(botao => {
-    botao.addEventListener('click', () => {
-        FecharModal(modalTermos)
-        FecharModal(modalPrivacidade)
-        FecharModal(modalEsqueceuSenha)
-    })
-})
+botoesFechar.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    FecharModal(modalTermos);
+    FecharModal(modalPrivacidade);
+    FecharModal(modalEsqueceuSenha);
+  });
+});
 
 //BOTÃO LARANJA - ENTENDI
-botoesPadraoLaranja.forEach(botao => {
-    botao.addEventListener('click', () => {
-        FecharModal(modalTermos)
-        FecharModal(modalPrivacidade)
-    })
-})
+botoesPadraoLaranja.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    FecharModal(modalTermos);
+    FecharModal(modalPrivacidade);
+  });
+});
 
 // ---------------- MODAL RECUPERAÇÃO DE SENHA ----------------
 
 //SELECIONAR O LINK
-const linkEsqueceuSenha = document.querySelector('a[href="#esqueceusenha"]')
+const linkEsqueceuSenha = document.querySelector('a[href="#esqueceusenha"]');
 
-const linkVoltarLogin = document.querySelector('a[href="#voltarlogin"]')
+const linkVoltarLogin = document.querySelector('a[href="#voltarlogin"]');
 
 //ABRIR MODAL
-function abrirModalEsqueceuSenha (modal: HTMLElement) {
-    modal.classList.add('ativo')
+function abrirModalEsqueceuSenha(modal: HTMLElement) {
+  modal.classList.add("ativo");
 }
 //FECHAR MODAIS
-function FecharModalEsqueceuSenha (modal: HTMLElement) {
-    modal.classList.remove('ativo')
+function FecharModalEsqueceuSenha(modal: HTMLElement) {
+  modal.classList.remove("ativo");
 }
 
-//LISTNER ABERTURA 
-linkEsqueceuSenha?.addEventListener('click', (evento) => {
-        evento.preventDefault()
-        abrirModal(modalEsqueceuSenha)
-    })
+//LISTNER ABERTURA
+linkEsqueceuSenha?.addEventListener("click", (evento) => {
+  evento.preventDefault();
+  abrirModal(modalEsqueceuSenha);
+});
 
 //LISTNER FECHAR PELO LINK VOLTAR AO LOGIN
-linkVoltarLogin?.addEventListener('click', (evento) => {
-        evento.preventDefault()
-        FecharModalEsqueceuSenha(modalEsqueceuSenha)
-    })
-
-
+linkVoltarLogin?.addEventListener("click", (evento) => {
+  evento.preventDefault();
+  FecharModalEsqueceuSenha(modalEsqueceuSenha);
+});
 
 // ---------------- ALTERNAR FORMULÁRIO DE ENTRAR PARA CRIAR A CONTA ----------------
 
-// SELECIONAR DIVS
-const divContainerTituloDireita = document.querySelector('.container-titulo-direita') as HTMLElement
-const divFormTabs = document.querySelector('.form-tabs') as HTMLElement
-const divLogarCadastrarUsuario = document.querySelector('.logar-cadastrar-usuario') as HTMLElement
+//MOSTRAR E OCULTAR PALAVRA "DE VOLTA."
+const spanDeVolta = document.querySelector(".span-volta") as HTMLElement;
 
-const divPoliticas = document.querySelector('.politicas') as HTMLElement
-
-
-// SELECIONAR BOTÕES
-const buttonEntrar = document.querySelector('#button-entrar') as HTMLElement
-const buttonCadastrar = document.querySelector('#button-cadastrar') as HTMLElement
-
-//SPAN
-const spanDeVolta = document.querySelector('.span-volta')
-const pSpan = document.querySelector('.frase-header')
-
-//P HEADER
-const pHeader = document.querySelector('#p-header') as HTMLElement
-
-
-
-//MOSTRAR PALAVRA "DE VOLTA."
-function mostrarPalavraVolta () {
-    spanDeVolta?.classList.add('oculta')    
+function removeClassOcultaSpan() {
+  spanDeVolta?.classList.remove("oculta");
 }
-//OCULTAR PALAVRA "DE VOLTA."
-function ocultarPalavraVolta () {
-    spanDeVolta?.classList.remove('oculta')    
+function addClassOcultaSpan() {
+  spanDeVolta?.classList.add("oculta");
 }
 
+//MOSTRAR E OCULAR A FRASE HEADER: ENTRAR
+const pHeader = document.querySelector("#p-header") as HTMLElement;
 
-//MOSTRAR FRASE HEADER: ENTRAR
-function fraseOpcaoEntrar ()  {
-    pHeader.innerText = 'Entre na sua conta para continuar de onde parou'
-} 
-//MOSTRAR FRASE HEADER: CADASTRAR
-function fraseOpcaoCadastrar ()  {
-    pHeader.innerText = 'Crie sua conta e começe agora'
-} 
-
-
+function fraseOpcaoEntrar() {
+  pHeader.innerText = "Entre na sua conta para continuar de onde parou";
+}
+function fraseOpcaoCadastrar() {
+  pHeader.innerText = "Crie sua conta e começe agora";
+}
 
 //MOSTRAR E OCULTAR LABEL: NOME
-const labelNome = document.querySelector('#label-cadastro-nome') as HTMLElement
+const labelNome = document.querySelector("#label-cadastro-nome") as HTMLElement;
 
-//OCULTAR LABEL: NOME
-function ocultarLabelNome () {
-    labelNome?.classList.remove('oculta')
+function removeClassOcultaLabelNome() {
+  labelNome?.classList.remove("oculta");
 }
-//MOSTRAR LABEL:NOME
-function mostrarLabelNome () {
-    labelNome?.classList.add('oculta')
+function addClassOcultaLabelNome() {
+  labelNome?.classList.add("oculta");
 }
 
 //MOSTRAR E OCULTTAR INPUT: NOME
-const inputNome = document.querySelector('#input-cadastro-nome') as HTMLElement
+const inputNome = document.querySelector("#input-cadastro-nome") as HTMLElement;
 
-//OCULTAR INPUT: NOME
-function ocultarInputNome () {
-    inputNome?.classList.remove('oculta')
+function removeClassOcultaInputNome() {
+  inputNome?.classList.remove("oculta");
+}
+function addClassOcultaInputNome() {
+  inputNome?.classList.add("oculta");
 }
 
-//MOSTRAR INPUT: NOME
-function mostrarInputNome () {
-    inputNome?.classList.add('oculta')
+//MOSTRAR E OCULTAR LABEL: CONFIRMAR SENHA
+const labelConfirmarSenha = document.querySelector(
+  "#label-confirmar-senha",
+) as HTMLElement;
+
+function removeClassOcultaLabelConfirmarSenha() {
+  labelConfirmarSenha?.classList.remove("oculta");
+}
+function addClassOcultaLabelConfirmarSenha() {
+  labelConfirmarSenha?.classList.add("oculta");
 }
 
+//MOSTRAR E OCULTAR INPUT DO CONFIRMAR SENHA
+const inputConfirmarSenha = document.querySelector(
+  "#input-confirmar-senha",
+) as HTMLElement;
 
-//OCULTAR E MOSTRAR LABEL DO CONFIRMAR SENHA
-const labelConfirmarSenha = document.querySelector('#label-confirmar-senha') as HTMLElement
-
-//OCULTAR LABEL: CONFIRMAR SENHA
-function ocultarLabelConfirmarSenha () {
-    labelConfirmarSenha?.classList.remove('oculta')
+function removeClassOcultaInputConfirmarSenha() {
+  inputConfirmarSenha?.classList.remove("oculta");
+}
+function addClassOcultaInputConfirmarSenha() {
+  inputConfirmarSenha?.classList.add("oculta");
 }
 
-//MOSTRAR LABEL: CONFIRMAR SENHA
-function mostrarLabelConfirmarSenha () {
-    labelConfirmarSenha?.classList.add('oculta')
+//MOSTRAR E OCULTAR DIV: ESQUECEU SENHA
+const divEsqueceuSenha = document.querySelector(
+  ".esqueceu-senha",
+) as HTMLElement;
+
+function removeClassOcultaEsqueceuSenha() {
+  divEsqueceuSenha?.classList.remove("oculta");
 }
-
-
-//OCULTAR E MOSTRAR INPUT DO CONFIRMAR SENHA
-const inputConfirmarSenha = document.querySelector('#input-confirmar-senha') as HTMLElement
-
-//OCULTAR INPUT: CONFIRMAR SENHA
-function ocultarInputConfirmarSenha () {
-    inputConfirmarSenha?.classList.remove('oculta')
-}
-
-//MOSTRAR INPUT: CONFIRMAR SENHA
-function mostrarInputConfirmarSenha () {
-    inputConfirmarSenha?.classList.add('oculta')
-}
-
-
-//OCULTAR DIV ESQUECEU SENHA
-const divEsqueceuSenha = document.querySelector('.esqueceu-senha') as HTMLElement
-function ocultarEsqueceuSenha () {
-    divEsqueceuSenha?.classList.add('oculta')
+function addClassOcultaEsqueceuSenha() {
+  divEsqueceuSenha?.classList.add("oculta");
 }
 
 //TROCAR TEXTO DO BOTÃO
-function trocarTextoBotao (textoBotao: HTMLElement) {
-    textoBotao.innerText = 'Cadastrar'
+const textoBotao = document.querySelector(".texto-button") as HTMLElement;
+
+function textoOpcaoEntrar() {
+  textoBotao.innerText = "Entrar";
+}
+
+function textoOpcaoCadastrar() {
+  textoBotao.innerText = "Cadastrar";
+}
+
+// ALTERNAR COR BOTÃO ENTRAR/CRIAR CONTA
+//const divFormTabs = document.querySelector('.form-tabs') as HTMLElement
+const botaoEntrar = document.querySelector("#button-etrar") as HTMLElement;
+const botaoCadastrar = document.querySelector(
+  "#button-cadastrar",
+) as HTMLElement;
+
+
+function BotaoCadastrar() {
+  botaoEntrar?.classList.remove("active");
+  botaoCadastrar?.classList.add("active");
+}
+
+function BotaoEntrar() {
+  botaoEntrar?.classList.add("active");
+  botaoCadastrar?.classList.remove("active");
 }
 
 
-
-// LISTNER ALTERAR TELA DE LOGIN DE ENTRAR PARA CRIAR CONTA
-// function clicarEntrar(valorBotao: number){
-//     ocultarPalavraVolta (valorBotao)
-// }
-
-
-function clicarEntrar(isMostraEntrar: boolean){
-    if (isMostraEntrar == true) {
-        mostrarPalavraVolta();
-        fraseOpcaoEntrar();
-        mostrarLabelNome()
-        mostrarInputNome()
-
-
-    } else {
-        ocultarPalavraVolta();
-        fraseOpcaoCadastrar();
-        ocultarLabelNome()
-        ocultarInputNome()
-
-    }
+function clicarEntrar(isMostraEntrar: boolean) {
+  if (isMostraEntrar == true) {
+    removeClassOcultaSpan();
+    fraseOpcaoEntrar();
+    addClassOcultaLabelNome();
+    addClassOcultaInputNome();
+    addClassOcultaLabelConfirmarSenha();
+    addClassOcultaInputConfirmarSenha();
+    removeClassOcultaEsqueceuSenha();
+    textoOpcaoEntrar();
+    BotaoEntrar();
+  } else {
+    addClassOcultaSpan();
+    fraseOpcaoCadastrar();
+    removeClassOcultaLabelNome();
+    removeClassOcultaInputNome();
+    removeClassOcultaLabelConfirmarSenha();
+    removeClassOcultaInputConfirmarSenha();
+    addClassOcultaEsqueceuSenha();
+    textoOpcaoCadastrar();
+    BotaoCadastrar();
+  }
 }
-
-// function clicarCadastrar(){
-//     ocultarPalavraVolta()
-// }
-
-// SE BOTAO ENTRAR ESTIVER SELECIONADO ENTAO: 
-//ocultar label e input nome
-//ocultar labl e input confirmar senha
-
-//SE BOTAO CADASTAR ESTIVER SELECIONADO ENTAO:
-//ocultar texto "de volta."
-//alterar frasdo header 
-//ocultar campo esqueceu senha
-//alterar texto botao de etrar para cadastrar
-
-
-
-
-
-
-
-
-
-
