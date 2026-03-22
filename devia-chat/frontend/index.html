@@ -62,22 +62,37 @@
       <div class="direita">
         <!-- TITULO DIREITA -->
         <div class="container-titulo-direita">
-          <h1>Bem vindo (a) <span class="span-volta" id="span-volta">de volta.</span></h1>
+          <h1>
+            Bem vindo (a)
+            <span class="span-volta" id="span-volta">de volta.</span>
+          </h1>
           <p class="p-header-e-footer frase-header" id="p-header">
             Entre na sua conta para continuar de onde parou
           </p>
         </div>
         <!-- BOTÕES ENTRAR E CRIAR CONTA -->
         <div class="form-tabs">
-          <button type="button" id="button-etrar"  onclick="clicarEntrar(true)">
+          <button
+            type="button"
+            id="button-cadastrar"
+            class="active"
+            onclick="clicarEntrar(false)"
+          >
+            Criar conta
+          </button>
+          <button type="button" id="button-etrar" onclick="clicarEntrar(true)">
             Entrar
           </button>
-          <button type="button" id="button-cadastrar" class="active" onclick="clicarEntrar(false)">Criar conta</button>
         </div>
         <!-- FORMULÁRIO LOGAR/CADASTRAR USUÁRIO -->
         <form class="logar-cadastrar-usuario">
           <label class="label-form" id="label-cadastro-nome">NOME</label>
-          <input class="input-form" type="text" placeholder="Seu nome" id="input-cadastro-nome"/>
+          <input
+            class="input-form"
+            type="text"
+            placeholder="Seu nome"
+            id="input-cadastro-nome"
+          />
           <label class="label-form">EMAIL</label>
           <input
             class="input-form"
@@ -94,7 +109,9 @@
             id=""
             placeholder="••••••••"
           />
-          <label class="label-form" id="label-confirmar-senha">CONFIRMAR SENHA</label>
+          <label class="label-form" id="label-confirmar-senha"
+            >CONFIRMAR SENHA</label
+          >
           <input
             class="input-form"
             type="password"
@@ -109,7 +126,7 @@
         </form>
         <!-- FOOTER -->
         <div class="politicas">
-          <p class="p-header-e-footer"> 
+          <p class="p-header-e-footer">
             Ao continuar, você concorda com os
             <a href="#termos">Termos de Uso</a> e
             <a href="#privacidade">Política de Privacidade</a> do DEV.ia
@@ -354,14 +371,43 @@
               class="input-form"
               type="email"
               name="email"
-              id=""
+              id="inputEmailEsqueceuSenha"
               placeholder="seu@email.com"
             />
+            <p class="p-header-e-footer" id="mensagemAdicionada"></p>
           </form>
         </div>
         <div class="footer-modal">
           <a class="p-header-e-footer" href="#voltarlogin">← Voltar ao login</a>
-          <button class="botao-padrao-laranja">Enviar o link</button>
+          <button class="botao-padrao-laranja" id="botao-enviar-link-email" onclick="enviarLinkSenhaPorEmail()">Enviar o link</button>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL ESQUECEU A SENHA: CONFIRMAÇÃO LINK ENVIADO -->
+    <div class="container-modal-confirmacao-link">
+      <div class="modal">
+        <div class="cabecalho-modal">
+          <div class="cabecalho-esquerda">
+            <img src="src/icons/icon-key.png" alt="" />
+            <div class="cabecalho-meio">
+              <h2 class="h2-header-e-footer">Esqueceu a senha?</h2>
+              <p class="p-header-e-footer">Vamos te ajudar a recuperar</p>
+            </div>
+          </div>
+          <button class="botao-fechar-janela" onclick="FecharModalConfirmacaoEnvioSenha()">X</button>
+        </div>
+        <div class="body-modal">
+          <div class="div-img-email">
+            <img src="src/icons/icon-email.png" alt="icone-emal" />
+          </div>
+          <h2 class="h2-header-e-footer">Email enviado!</h2>
+          <p class="p-header-e-footer">
+            Enviar o link de recuperação para <span id="emailDigitado">seu@email.com</span>.Verifique sua caixa
+            de entrada
+          </p>
+        </div>
+        <div class="footer-modal">
+          <button class="botao-padrao-laranja" onclick="FecharModalConfirmacaoEnvioSenha()">Fechar</button>
         </div>
       </div>
     </div>

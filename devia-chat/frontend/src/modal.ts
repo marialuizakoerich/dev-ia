@@ -1,5 +1,4 @@
-// ---------------- MODAL TERMO DE USO E POLITICA DE PRIVACIDADE ----------------
-// SELECIONAR OS MODAIS
+//MODAIS
 const modalTermos = document.querySelector(
   ".container-modal-termos",
 ) as HTMLElement;
@@ -9,6 +8,10 @@ const modalPrivacidade = document.querySelector(
 const modalEsqueceuSenha = document.querySelector(
   ".container-modal-formulario-senha",
 ) as HTMLElement;
+const modalConfirmacaoEmail = document.querySelector(
+  ".container-modal-confirmacao-link",
+);
+// ---------------- MODAL TERMO DE USO E POLITICA DE PRIVACIDADE ----------------
 
 //SELECIONA OS LIKNS
 const linksTermos = document.querySelectorAll('a[href="#termos"]');
@@ -75,6 +78,7 @@ function abrirModalEsqueceuSenha(modal: HTMLElement) {
 //FECHAR MODAIS
 function FecharModalEsqueceuSenha(modal: HTMLElement) {
   modal.classList.remove("ativo");
+  limparModalEsqueceuSenha()
 }
 
 //LISTNER ABERTURA
@@ -162,9 +166,11 @@ const divEsqueceuSenha = document.querySelector(
 
 function removeClassOcultaEsqueceuSenha() {
   divEsqueceuSenha?.classList.remove("oculta");
+  
 }
 function addClassOcultaEsqueceuSenha() {
   divEsqueceuSenha?.classList.add("oculta");
+  limparModalEsqueceuSenha()
 }
 
 //TROCAR TEXTO DO BOTÃO
@@ -180,22 +186,20 @@ function textoOpcaoCadastrar() {
 
 // ALTERNAR COR BOTÃO ENTRAR/CRIAR CONTA
 //const divFormTabs = document.querySelector('.form-tabs') as HTMLElement
-const botaoEntrar = document.querySelector("#button-etrar") as HTMLElement;
-const botaoCadastrar = document.querySelector(
+const buttonEntrar = document.querySelector("#button-etrar") as HTMLElement;
+const buttonCadastrar = document.querySelector(
   "#button-cadastrar",
 ) as HTMLElement;
 
-
-function BotaoCadastrar() {
-  botaoEntrar?.classList.remove("active");
-  botaoCadastrar?.classList.add("active");
+function botaoCadastrar() {
+  buttonEntrar?.classList.remove("active");
+  buttonCadastrar?.classList.add("active");
 }
 
-function BotaoEntrar() {
-  botaoEntrar?.classList.add("active");
-  botaoCadastrar?.classList.remove("active");
+function botaoEntrar() {
+  buttonEntrar?.classList.add("active");
+  buttonCadastrar?.classList.remove("active");
 }
-
 
 function clicarEntrar(isMostraEntrar: boolean) {
   if (isMostraEntrar == true) {
@@ -207,7 +211,7 @@ function clicarEntrar(isMostraEntrar: boolean) {
     addClassOcultaInputConfirmarSenha();
     removeClassOcultaEsqueceuSenha();
     textoOpcaoEntrar();
-    BotaoEntrar();
+    botaoEntrar();
   } else {
     addClassOcultaSpan();
     fraseOpcaoCadastrar();
@@ -217,6 +221,66 @@ function clicarEntrar(isMostraEntrar: boolean) {
     removeClassOcultaInputConfirmarSenha();
     addClassOcultaEsqueceuSenha();
     textoOpcaoCadastrar();
-    BotaoCadastrar();
+    botaoCadastrar();
   }
+}
+
+// ---------------- FECHAR MODAL ESQUECEU SENHA E ABRIR MODAL CONFIRMAÇÃO DE ENVIO ----------------
+const botaoEnviarLinkEsqueceuSenha = document.querySelector(
+  "#botao-enviar-link-email",
+);
+const inputEmailModalEsqueceuSenha = document.getElementById(
+  "inputEmailEsqueceuSenha",
+) as HTMLInputElement;
+const spanTextoEmail = document.getElementById("emailDigitado") as HTMLElement;
+
+function fecharModalEsqueceuSenha() {
+  modalEsqueceuSenha?.classList.remove("ativo");
+}
+
+function abrirModalConfirmacaoEmail() {
+  modalConfirmacaoEmail?.classList.add("ativo");
+}
+
+//INFORMAR MENSAGEM DE ERRO
+const criaParagrafoMensagemDeErro = document.getElementById('mensagemAdicionada') as HTMLElement
+
+//INFORMAR MENSAGEM DE ERRO
+function mensagemInformarEmail() {
+    criaParagrafoMensagemDeErro.innerText = 'Por favor digite um email válido!'
+}
+
+//LIMPAR INFORMAÇOES QUANDO CLICAR NO BOTÃO
+function limparModalEsqueceuSenha() {
+    inputEmailModalEsqueceuSenha.value = "";
+    criaParagrafoMensagemDeErro.innerText = "";
+}
+
+function enviarLinkSenhaPorEmail() {
+   if ( inputEmailModalEsqueceuSenha.value == '') {
+        mensagemInformarEmail()
+    } else {
+        fecharModalEsqueceuSenha();
+        abrirModalConfirmacaoEmail();
+        mostrarEmailNaMensagem();
+        limparModalEsqueceuSenha()
+    }
+  }
+
+
+
+
+
+
+// ---------------- MODAL CONFIRMAÇÃO DE ENVIO DE SENHA ----------------
+
+//FECHAR MODAL NO BOTÃO "FECHAR"
+function FecharModalConfirmacaoEnvioSenha() {
+  modalConfirmacaoEmail?.classList.remove("ativo");
+}
+
+// ---------------- PEGAR VALOR DO INPUT MODAL ESQUECEU SENHA E MOSTRAR NO MODAL CONFIRMAÇÃO  ----------------
+
+function mostrarEmailNaMensagem() {
+  spanTextoEmail.innerText = inputEmailModalEsqueceuSenha.value;
 }
